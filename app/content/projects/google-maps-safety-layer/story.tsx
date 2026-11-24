@@ -168,6 +168,7 @@ export default function GoogleMapsStory({ media, video }: StoryProps) {
 
       <Walkthrough
         tone="deep"
+        side
         label="Full prototype walkthrough"
         video={video("full-flow")}
         title="The full flow, from searching a destination to sounding the siren."
