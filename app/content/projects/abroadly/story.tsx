@@ -5,10 +5,10 @@
  * then each key flow as a titled band. Research findings are only what the
  * presentation states; anything marked "assumption" hasn't been tested yet.
  */
-import { Evidence, Feature, List, Overview, Screens } from "~/components/story";
+import { Evidence, Feature, List, Overview, Screens, Walkthrough } from "~/components/story";
 import type { StoryProps } from "~/content/types";
 
-export default function AbroadlyStory({ media }: StoryProps) {
+export default function AbroadlyStory({ media, video }: StoryProps) {
   return (
     <>
       <Screens
@@ -169,6 +169,17 @@ export default function AbroadlyStory({ media }: StoryProps) {
             ),
           },
         ]}
+      />
+
+      <Walkthrough
+        device
+        side
+        tone="deep"
+        deviceShape={{ ratio: "654 / 1374", radius: "16% / 7.6%" }}
+        label="Full Abroadly prototype walkthrough"
+        title="The full flow: destinations, Q&A, communities, verification, lists, the AI assistant and friends."
+        intro="The interactive prototype, start to finish."
+        video={video("full-flow")}
       />
     </>
   );

@@ -784,8 +784,8 @@
 /* The box takes the phone's own shape, so nothing is cropped and the rounded corners trim
    the recording's background exactly at the phone's edge. */
 .device .phone {
-  aspect-ratio: 874 / 1638;
-  border-radius: 17.2% / 9.2%;
+  aspect-ratio: var(--device-ratio, 874 / 1638);
+  border-radius: var(--device-radius, 17.2% / 9.2%);
   overflow: hidden;
   isolation: isolate;
 }

@@ -121,6 +121,7 @@ export function Walkthrough({
   evidence,
   device = false,
   side = false,
+  deviceShape,
 }: {
   video: VideoData;
   label: string;
@@ -136,7 +137,12 @@ export function Walkthrough({
   device?: boolean;
   /** Title and intro on the left, the video larger on the right. */
   side?: boolean;
+  /** For device recordings of a different phone: its width / height and corner radius. */
+  deviceShape?: { ratio: string; radius: string };
 }) {
+  const shapeStyle = deviceShape
+    ? ({ "--device-ratio": deviceShape.ratio, "--device-radius": deviceShape.radius } as CSSProperties)
+    : undefined;
   if (side) {
     return (
       <section className={`${s.band} ${s[tone]} ${device ? s.device : ""}`} aria-label={label}>
@@ -151,7 +157,7 @@ export function Walkthrough({
             )}
           </div>
           <Reveal className={s.sideMedia}>
-            <div className={wide ? s.browser : s.phone}>
+            <div className={wide ? s.browser : s.phone} style={shapeStyle}>
               <Video video={video} label={label} controls={!autoplay} />
             </div>
           </Reveal>
@@ -171,7 +177,7 @@ export function Walkthrough({
         )}
       </div>
       <Reveal className={`container ${s.walkthrough}`}>
-        <div className={wide ? s.browser : s.phone}>
+        <div className={wide ? s.browser : s.phone} style={shapeStyle}>
           <Video video={video} label={label} controls={!autoplay} />
         </div>
       </Reveal>
