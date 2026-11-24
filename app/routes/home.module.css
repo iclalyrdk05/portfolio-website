@@ -1,0 +1,42 @@
+.hero {
+  padding-top: clamp(2rem, 5vw, 4rem);
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  border-bottom: 1px solid var(--rule);
+}
+
+.what {
+  display: grid;
+  gap: 1rem;
+  max-width: 34rem;
+}
+
+.intro {
+  font-size: 1.125rem;
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+/* Plain italic text with dots between, not buttons: the filters below are the buttons. */
+.focus {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 0.15rem;
+  font-style: italic;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--olive);
+}
+
+/* The dot trails each item, so a wrapped line never starts with one. */
+.focus li:not(:last-child)::after {
+  content: "·";
+  margin-inline: 0.55em;
+  font-style: normal;
+  color: var(--muted);
+}
+
+.location {
+  font-size: var(--text-sm);
+  color: var(--muted);
+}

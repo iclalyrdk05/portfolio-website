@@ -1,0 +1,6 @@
+.footer {
+  margin-top: clamp(4rem, 8vw, 6rem);
+  padding-block: 1.5rem 2rem;
+  font-size: var(--text-xs);
+  color: var(--muted);
+}

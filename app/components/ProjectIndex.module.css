@@ -1,0 +1,151 @@
+/* ---------- Filters: a row of buttons ---------- */
+
+.filters {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  /* On narrow screens the row scrolls sideways instead of wrapping into a stack. */
+  overflow-x: auto;
+  scrollbar-width: none;
+  margin-inline: calc(var(--margin) * -1);
+  padding-inline: var(--margin);
+}
+
+.filters::-webkit-scrollbar {
+  display: none;
+}
+
+.filters li {
+  flex: none;
+}
+
+.filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: 999px;
+  color: var(--ink);
+  white-space: nowrap;
+  transition:
+    background-color 0.25s,
+    color 0.25s,
+    border-color 0.25s;
+}
+
+.filter:hover {
+  border-color: var(--ink);
+}
+
+.filter[aria-pressed="true"] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
+.count {
+  font-weight: 400;
+  font-size: var(--text-xs);
+  opacity: 0.6;
+}
+
+@media (min-width: 900px) {
+  .filters {
+    flex-wrap: wrap;
+    overflow: visible;
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+}
+
+/* ---------- Card grid ---------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem 0.75rem;
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 3.5rem 1rem;
+  }
+}
+
+.card {
+  display: block;
+}
+
+.num {
+  display: block;
+  text-align: right;
+  font-size: 0.6875rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+
+.media {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--paper-deep);
+}
+
+.media > picture {
+  display: block;
+  height: 100%;
+}
+
+.media :is(img, div) {
+  transition: transform 1.2s var(--ease-out);
+}
+
+.card:hover .media :is(img, div) {
+  transform: scale(1.03);
+}
+
+.title {
+  margin-top: 0.85rem;
+  font-size: 1.25rem;
+  line-height: 1.15;
+}
+
+.card:hover .title {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+/* Tagline on the left, category on the right, same line. */
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.15rem 1rem;
+  margin-top: 0.2rem;
+}
+
+.tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.9375rem;
+  line-height: 1.3;
+  color: var(--muted);
+}
+
+.category {
+  font-size: var(--text-xs);
+  color: var(--muted);
+}
+
+/* Phones: two narrow columns, so the category drops under the tagline. */
+@media (max-width: 599px) {
+  .meta {
+    flex-direction: column;
+  }
+}

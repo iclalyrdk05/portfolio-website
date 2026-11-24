@@ -1,0 +1,122 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+/* Blur lives on a pseudo-element so the fixed mobile menu isn't trapped inside the header. */
+.header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--paper) 86%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.bar {
+  position: relative;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-h);
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.5rem;
+  letter-spacing: -0.01em;
+  color: var(--olive);
+  position: relative;
+  z-index: 2;
+}
+
+.nav {
+  display: none;
+  gap: 2rem;
+  font-size: var(--text-sm);
+}
+
+.link {
+  position: relative;
+  color: var(--ink);
+  padding-block: 0.25rem;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s var(--ease-out);
+}
+
+.link:hover::after,
+.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.toggle {
+  display: inline-flex;
+  gap: 0.15rem;
+  align-items: center;
+  font-size: 1.125rem;
+  color: var(--olive);
+  padding: 0.5rem;
+  margin-right: -0.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.plus {
+  display: inline-block;
+  width: 0.8em;
+  text-align: center;
+}
+
+.sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: var(--paper);
+  padding-top: calc(var(--header-h) + 3rem);
+}
+
+.sheetList {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.sheetLink {
+  font-size: clamp(3rem, 14vw, 5rem);
+  color: var(--ink);
+}
+
+.sheetMeta {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+}
+
+@media (min-width: 768px) {
+  .nav {
+    display: flex;
+  }
+  .toggle,
+  .sheet {
+    display: none;
+  }
+}

@@ -1,0 +1,136 @@
+/* ---------- Hero: text + facts left, cover right ---------- */
+
+.hero {
+  padding-top: clamp(2.5rem, 6vw, 5rem);
+  row-gap: 2.5rem;
+}
+
+.heroText,
+.cover {
+  grid-column: 1 / -1;
+}
+
+.title {
+  margin-top: 0.75rem;
+  font-size: clamp(2.25rem, 1.5rem + 2.4vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.summary {
+  margin-top: clamp(1.25rem, 2.5vw, 2rem);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 36rem;
+  text-wrap: pretty;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem var(--gutter);
+  max-width: 36rem;
+  margin: clamp(1.75rem, 3vw, 2.5rem) 0 0;
+  font-size: var(--text-sm);
+}
+
+.facts div {
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--rule);
+}
+
+.facts dt {
+  color: var(--muted);
+}
+
+.facts dd {
+  margin: 0.15rem 0 0;
+}
+
+.cover {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--paper-deep);
+}
+
+.cover > picture {
+  display: block;
+  height: 100%;
+}
+
+@media (min-width: 900px) {
+  .heroText {
+    grid-column: 1 / span 6;
+  }
+  .cover {
+    grid-column: 8 / span 5;
+    align-self: start;
+    margin-top: 1.75rem;
+  }
+}
+
+.pending {
+  margin-top: 3rem;
+  color: var(--muted);
+}
+
+/* ---------- Previous / next project ---------- */
+
+/* Text only, so the footer of every case study stays one short row, on phones too. */
+.pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: end;
+  gap: 1.5rem;
+  margin-top: clamp(6rem, 12vw, 10rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+
+.step {
+  display: grid;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.nextStep {
+  justify-items: end;
+  text-align: right;
+}
+
+.stepLabel {
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.3s;
+}
+
+.stepTitle {
+  font-size: 1.125rem;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.step:hover .stepLabel {
+  color: var(--ink);
+}
+
+.step:hover .stepTitle {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+
+.arrow {
+  display: inline-block;
+  transition: transform 0.5s var(--ease-out);
+}
+
+.prev:hover .arrow {
+  transform: translateX(-0.25em);
+}
+
+.nextStep:hover .arrow {
+  transform: translateX(0.25em);
+}

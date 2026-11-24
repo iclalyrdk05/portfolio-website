@@ -1,0 +1,53 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "pnpm build",
+  "outputDirectory": "build/client",
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/portfolio",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio-collections/portfolio/atrove",
+      "destination": "/work/altrove",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio-collections/portfolio/keepsake-book",
+      "destination": "/work/keepsake",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio-collections/portfolio/keepsake-app",
+      "destination": "/work/keepsake",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio-collections/portfolio/wordflow",
+      "destination": "/work",
+      "permanent": false
+    },
+    {
+      "source": "/work/keepsake-book",
+      "destination": "/work/keepsake",
+      "permanent": true
+    },
+    {
+      "source": "/work/keepsake-app",
+      "destination": "/work/keepsake",
+      "permanent": true
+    },
+    {
+      "source": "/work/local-services-marketplace",
+      "destination": "/work/sayso",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio-collections/portfolio/:slug",
+      "destination": "/work/:slug",
+      "permanent": true
+    }
+  ]
+}
